@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -53,9 +53,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;NO_CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\rodger_chen\Documents\Visual Studio 2015\Projects\rtmpdump\Project\openssl;C:\Users\rodger_chen\Documents\Visual Studio 2015\Projects\rtmpdump\Project\zlib;C:\Users\rodger_chen\Documents\Visual Studio 2015\Projects\rtmpdump\Project\Other;C:\Users\rodger_chen\Documents\Visual Studio 2015\Projects\rtmpdump\Project\Project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../openssl;../zlib;../Other;C:\Users\rodger_chen\Documents\Visual Studio 2015\Projects\rtmpdump\Project\Project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,6 +87,7 @@
     <ClInclude Include="rtmpdump-2.3\librtmp\bytes.h" />
     <ClInclude Include="rtmpdump-2.3\librtmp\dh.h" />
     <ClInclude Include="rtmpdump-2.3\librtmp\dhgroups.h" />
+    <ClInclude Include="rtmpdump-2.3\librtmp\getopt.h" />
     <ClInclude Include="rtmpdump-2.3\librtmp\handshake.h" />
     <ClInclude Include="rtmpdump-2.3\librtmp\http.h" />
     <ClInclude Include="rtmpdump-2.3\librtmp\log.h" />
@@ -98,14 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rtmpdump-2.3\librtmp\amf.c" />
+    <ClCompile Include="rtmpdump-2.3\librtmp\getopt.c" />
     <ClCompile Include="rtmpdump-2.3\librtmp\hashswf.c" />
     <ClCompile Include="rtmpdump-2.3\librtmp\log.c" />
     <ClCompile Include="rtmpdump-2.3\librtmp\parseurl.c" />
     <ClCompile Include="rtmpdump-2.3\librtmp\rtmp.c" />
-    <ClCompile Include="rtmpdump-2.3\rtmpdump.c" />
-    <ClCompile Include="rtmpdump-2.3\rtmpgw.c" />
-    <ClCompile Include="rtmpdump-2.3\rtmpsrv.c" />
-    <ClCompile Include="rtmpdump-2.3\rtmpsuck.c" />
+    <ClCompile Include="rtmpdump-2.3\librtmp\rtmpdump.c" />
     <ClCompile Include="rtmpdump-2.3\thread.c" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

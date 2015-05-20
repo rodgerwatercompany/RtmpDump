@@ -4,7 +4,8 @@
 //
 
 #pragma once
-
+#include <winsock2.h> 
+#pragma comment(lib, "WS2_32")
 #include "targetver.h"
 
 #include <stdio.h>

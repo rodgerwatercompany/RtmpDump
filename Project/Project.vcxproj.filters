@@ -54,24 +54,15 @@
     <ClInclude Include="rtmpdump-2.3\librtmp\amf.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="rtmpdump-2.3\librtmp\getopt.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="rtmpdump-2.3\thread.c">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="rtmpdump-2.3\rtmpsuck.c">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="rtmpdump-2.3\rtmpsrv.c">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="rtmpdump-2.3\rtmpgw.c">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="rtmpdump-2.3\rtmpdump.c">
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="rtmpdump-2.3\librtmp\rtmp.c">
@@ -87,6 +78,12 @@
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="rtmpdump-2.3\librtmp\amf.c">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="rtmpdump-2.3\librtmp\getopt.c">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="rtmpdump-2.3\librtmp\rtmpdump.c">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>

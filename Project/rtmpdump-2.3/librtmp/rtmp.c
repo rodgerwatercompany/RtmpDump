@@ -38,8 +38,8 @@
 #include <gnutls/gnutls.h>
 #else	/* USE_OPENSSL */
 
-#include "../openssl/ssl.h"
-#include "../openssl/rc4.h"
+#include <openssl/ssl.h>
+#include <openssl/rc4.h>
 /*
 #include <openssl/ssl.h>
 #include <openssl/rc4.h>*/
@@ -617,7 +617,7 @@ int RTMP_SetOpt(RTMP *r, const AVal *opt, AVal *arg)
 
   for (i=0; options[i].name.av_len; i++) {
     if (opt->av_len != options[i].name.av_len) continue;
-    if (strcasecmp(opt->av_val, options[i].name.av_val)) continue;
+	if (strcmp(opt->av_val, options[i].name.av_val)) continue;
     v = (char *)r + options[i].off;
     switch(options[i].otype) {
     case OPT_STR: {
@@ -633,7 +633,7 @@ int RTMP_SetOpt(RTMP *r, const AVal *opt, AVal *arg)
       fl = *(int *)v;
       for (j=0; truth[j].av_len; j++) {
         if (arg->av_len != truth[j].av_len) continue;
-        if (strcasecmp(arg->av_val, truth[j].av_val)) continue;
+		if (strcmp(arg->av_val, truth[j].av_val)) continue;
         fl |= options[i].omisc; break; }
       *(int *)v = fl;
       }
@@ -731,7 +731,7 @@ int RTMP_SetupURL(RTMP *r, char *url)
     	      len = r->Link.hostname.av_len + r->Link.app.av_len +
     		  sizeof("rtmpte://:65535/");
 	      r->Link.tcUrl.av_val = malloc(len);
-	      r->Link.tcUrl.av_len = snprintf(r->Link.tcUrl.av_val, len,
+		  r->Link.tcUrl.av_len = _snprintf(r->Link.tcUrl.av_val, len,
 		"%s://%.*s:%d/%.*s",
 		RTMPProtocolStringsLower[r->Link.protocol],
 		r->Link.hostname.av_len, r->Link.hostname.av_val,
@@ -2576,21 +2576,21 @@ DumpMetaData(AMFObject *obj)
 	  switch (prop->p_type)
 	    {
 	    case AMF_NUMBER:
-	      snprintf(str, 255, "%.2f", prop->p_vu.p_number);
+			_snprintf(str, 255, "%.2f", prop->p_vu.p_number);
 	      break;
 	    case AMF_BOOLEAN:
-	      snprintf(str, 255, "%s",
+			_snprintf(str, 255, "%s",
 		       prop->p_vu.p_number != 0. ? "TRUE" : "FALSE");
 	      break;
 	    case AMF_STRING:
-	      snprintf(str, 255, "%.*s", prop->p_vu.p_aval.av_len,
+			_snprintf(str, 255, "%.*s", prop->p_vu.p_aval.av_len,
 		       prop->p_vu.p_aval.av_val);
 	      break;
 	    case AMF_DATE:
-	      snprintf(str, 255, "timestamp:%.2f", prop->p_vu.p_number);
+			_snprintf(str, 255, "timestamp:%.2f", prop->p_vu.p_number);
 	      break;
 	    default:
-	      snprintf(str, 255, "INVALID TYPE 0x%02x",
+			_snprintf(str, 255, "INVALID TYPE 0x%02x",
 		       (unsigned char)prop->p_type);
 	    }
 	  if (prop->p_name.av_len)
@@ -2617,8 +2617,7 @@ SAVC(duration);
 SAVC(video);
 SAVC(audio);
 
-static int
-HandleMetadata(RTMP *r, char *body, unsigned int len)
+static int HandleMetadata(RTMP *r, char *body, unsigned int len)
 {
   /* allright we get some info here, so parse it and print it */
   /* also keep duration or filesize to make a nice progress bar */
@@ -3638,7 +3637,7 @@ static int
 HTTP_Post(RTMP *r, RTMPTCmd cmd, const char *buf, int len)
 {
   char hbuf[512];
-  int hlen = snprintf(hbuf, sizeof(hbuf), "POST /%s%s/%d HTTP/1.1\r\n"
+  int hlen = _snprintf(hbuf, sizeof(hbuf), "POST /%s%s/%d HTTP/1.1\r\n"
     "Host: %.*s:%d\r\n"
     "Accept: */*\r\n"
     "User-Agent: Shockwave Flash\n"
